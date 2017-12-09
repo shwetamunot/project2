@@ -2,14 +2,15 @@ package com.niit.model;
 
 public class ErrorClasss {
 
-public ErrorClasss(int code, String message) {
+
+private int code;
+private String message;
+	public ErrorClasss(int code, String message) {
 	super();
 	this.code = code;
 	this.message = message;
 }
 
-private int code;
-private String message;
 public int getCode() {
 	return code;
 }

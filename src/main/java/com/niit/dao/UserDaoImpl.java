@@ -2,7 +2,6 @@ package com.niit.dao;
 
 import javax.transaction.Transactional;
 
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -51,5 +50,29 @@ if(user!=null)
 		System.out.println("true");
 		return true;
 	}
+	}
+
+	public User login(User user) {
+		Session session=sessionfactory.getCurrentSession();
+		Query query=session.createQuery("from User where username=? and password=?");
+	query.setString(0,user.getUsername());
+		query.setString(1,user.getPassword());
+		User validuser=(User)query.uniqueResult();
+
+		return validuser;
+	}
+
+
+
+	public void updateUser(User user) {
+	Session session=sessionfactory.getCurrentSession();
+	session.update(user);
+		
+	}
+
+	public User getUserByUsername(String username) {
+		Session session=sessionfactory.getCurrentSession();
+		User user=(User)session.get(User.class,username);
+		return user;
 	}
 }

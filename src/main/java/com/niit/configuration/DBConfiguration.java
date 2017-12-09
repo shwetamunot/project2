@@ -13,6 +13,7 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.model.Job;
 import com.niit.model.User;
 
 
@@ -42,13 +43,13 @@ public DataSource getDataSource()
 	 Properties p=new Properties();
 	 System.out.println("start");
 	 p.setProperty("hibernate.dialect","org.hibernate.dialect.Oracle10gDialect");
-	 //p.setProperty("hibernate.hbm2ddl.auto","update");
+//	 p.setProperty("hibernate.hbm2ddl.auto","update");
 	 p.setProperty("hibernate.show_sql","true");
 	
 lsfb.addProperties(p);
 
 
-Class classes[]=new Class[]{User.class};
+Class classes[]=new Class[]{User.class,Job.class};
 return	lsfb.addAnnotatedClasses(classes).buildSessionFactory();	
  
  }
