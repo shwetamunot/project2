@@ -2,11 +2,13 @@ package com.niit.dao;
 
 import java.util.List;
 
+
 import javax.transaction.Transactional;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -30,7 +32,7 @@ public class JobDaoImpl implements JobDao {
 		System.out.println("shows");
 		Session session=sessionfactory.getCurrentSession();
 		System.out.println("detail");
-		Job job=session.get(Job.class,id);
+		Job job= (Job) session.get(Job.class,id);
 		System.out.println("detls");
 		return job;
 	}
